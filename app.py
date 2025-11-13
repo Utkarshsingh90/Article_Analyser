@@ -9,6 +9,14 @@ import spacy
 from typing import Dict, List, Optional
 import pandas as pd
 
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    import subprocess
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
+
 # Page configuration
 st.set_page_config(
     page_title="Police Recognition Analytics",
